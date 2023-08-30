@@ -38,19 +38,16 @@ function App() {
   };
 
   const deleteTask = async (task: Task) => {
+    console.log(task);
     const updatedTasks = tasks.filter((t) => {
       return t.id !== task.id;
     });
     setTasks(updatedTasks);
 
-    const deletedTask = tasks.find((t) => t.id == task.id);
-
-    if (deletedTask) {
-      try {
-        localStorage.setItem("tasks", JSON.stringify(updatedTasks));
-      } catch (error) {
-        console.log("Failed to delete task from the server:", error);
-      }
+    try {
+      localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+    } catch (error) {
+      console.log("Failed to delete task from the server:", error);
     }
   };
 

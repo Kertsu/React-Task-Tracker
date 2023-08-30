@@ -5,6 +5,12 @@ const AddTask = ({ onCreateTask }: { onCreateTask: (task: any) => void }) => {
   const [newTaskDay, setNewTaskDay] = useState("");
   const [newTaskReminder, setnewTaskReminder] = useState(false);
 
+  const generateUniqueId = () => {
+    const date = Date.now();
+    const rand = Math.floor(Math.random() * 100000);
+    return `${date}.${rand}`;
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -14,6 +20,7 @@ const AddTask = ({ onCreateTask }: { onCreateTask: (task: any) => void }) => {
     }
 
     const newTask = {
+      id: generateUniqueId(),
       text: newTaskText,
       day: newTaskDay,
       reminder: newTaskReminder,
@@ -58,7 +65,7 @@ const AddTask = ({ onCreateTask }: { onCreateTask: (task: any) => void }) => {
           />
         </div>
         <div className="flex gap-4 items-baseline ">
-          <label className="text-md font-semibold mb-2" htmlFor="reminder">
+          <label className="text-md font-semibold my-2" htmlFor="reminder">
             Set Reminder:{" "}
           </label>
           <input
