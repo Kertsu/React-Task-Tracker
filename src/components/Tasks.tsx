@@ -1,7 +1,5 @@
-import { Task } from "../models/Task";
 import AddTask from "./AddTask";
 import TaskItem from "./TaskItem";
-import { useState, useEffect } from "react";
 const Tasks = ({
   toggleAddTask,
   createTask,
